@@ -1,0 +1,50 @@
+相关知识
+主键，是表中一列或者多列的组合，主键约束（Primary Key Constraint）要求主键列的数据唯一，并且不允许为空，主键能够唯一的标识表中的每一条记录，可以结合外键来定义与不同数据表之间的关系。
+怎么理解主键呢？我们知道数据库中的表可以存放很多数据，如果把表中的每一个数据比作一个人的话，那么表的主键就可以看做是人的身份证。
+
+你需要掌握：怎么给表中的字段添加主键约束。
+
+添加主键约束
+有两种方式可以添加主键约束：
+1.在定义列的同时指定主键；
+2.在定义完字段之后再指定主键。
+
+(1) 在定义列的同时指定主键：
+
+
+
+(2) 在定义完所有列之后指定主键。
+
+
+
+多字段联合主键
+
+在开发中还有一种情况很常见，就是将几个字段联合在一起作为主键，那这个在代码中怎么实现呢？
+举个例子，我们将员工的名字和部门ID联合起来作为主键：  
+
+CREATE TABLE t_emp2  
+(  
+    name VARCHAR(32),  
+    deptId INT,  
+    salary FLOAT,  
+    PRIMARY KEY(name,deptId)  
+)  
+语句执行后，会将name和deptId字段组合成为表t_emp2的多字段组合主键。
+
+编程要求
+在数据库MyDb中，创建两张表t_user1，t_user2，表结构如下，请为两张表分别创建主键约束，t_user1的主键为userId,t_user2的主键为联合主键，将字段name和phone作为t_user2的联合主键。
+
+表t_user1
+
+字段名	数据类型	备注
+userId	INT	用户ID
+name	VARCHAR(32)	用户名
+password	VARCHAR(11)	密码
+phone	VARCHAR(11)	电话号码
+email	VARCHAR(32)	邮箱
+表t_user2
+
+字段名	数据类型	备注
+name	VARCHAR(32)	用户名
+phone	VARCHAR(11)	电话号码
+email	VARCHAR(32)	邮箱
