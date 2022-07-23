@@ -1,0 +1,96 @@
+任务描述
+本关任务：给表添加外部关键字。
+
+相关知识
+为了完成本关任务，你需要掌握：
+1.什么是外部关键字；
+2.怎么给表添加外部关键字。
+
+外部关键字
+在以后我们统一将外部关键字叫做外键，外键就是另一张表中的主键。
+
+问：外键有啥用啊？
+答：外键的主要作用就是保持数据的一致性，完整性。
+
+再问：怎么保证的呢？
+答：看图。
+
+
+
+如图有两张表，classId 是T_Student的外键，是T_class 表的主键， 如果我们要删除T_class 表中classId为1的字段，程序是会报错的，因为t_student表中有数据和classId为1的字段关联了，是不能删除的，这样子就保证了数据的一致性和完整性。
+
+继续问：那怎么才能删除呢？
+接着答：需要先删除T__student表中classId为1的两个字段。
+
+如何给表添加外部关键字
+在MySQL中给表中字段添加外键约束的语法规则如下：  
+
+CONSTRAINT 外键名 FOREIGN KEY 字段名 REFERENCES 主表名(主键名)  
+举个例子：现在有两张表，t_emp、t_dept如下。
+
+t_dept表
+
+字段名称	数据类型	备注
+deptId	INT	部门编号
+name	VARCHAR(22)	部门名称
+location	VARCHAR(50)	部门位置
+t_emp表
+
+字段名称	数据类型	备注
+id	INT	员工编号
+name	VARCHAR(22)	员工姓名
+deptId	INT	部门ID(外键类型必须和对应主键类型一直)
+我们来创建两张表，并给员工表(t_emp)添加外键：
+
+CREATE TABLE t_dept  
+(  
+    deptId INT PRIMARY KEY,  
+    name VARCHAR(22),  
+    location VARCHAR(50)  
+);
+CREATE TABLE t_emp  
+(  
+    id INT PRIMARY KEY,  
+    name VARCHAR(22),  
+    deptId INT,  
+    CONSTRAINT fk_emp_dept1 FOREIGN KEY(deptId) REFERENCES t_dept(deptId)  
+);  
+实际操作如图：
+
+
+
+编程要求
+创建两张表如下，给t_student表添加外键约束，外键为classId,外键名称为fk_stu_class1。
+
+表t_class
+
+字段名称	数据类型	备注
+id	INT	班级Id，主键
+name	VARCHAR(22)	班级名称
+表t_student
+
+字段名称	数据类型	备注
+id	INT	学号，主键
+name	VARCHAR(22)	学生姓名
+classId	INT	班级ID，外键
+在创建表之前你需要先创建数据库：MyDb，并且将两张表创建在MyDb数据库中。
+
+
+
+
+操作代码mysql> create table t_class(
+    -> id int primary key,
+    -> name varchar(22),
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 4
+mysql> create table t_class( id int primary key, name varchar(22) );
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> create table t_student(
+    -> id int primary key,
+    -> name varchar(22),
+    -> classId int ,
+    -> constraint fk_stu_class1 foreign key(classId) references t_class(classId)
+    -> );
+mysql> create table t_student( id int primary key, name varchar(22), classId int , constraint fk_stu_class1 foreign key(classId) references t_class(id));
+Query OK, 0 rows affected (0.00 sec)
