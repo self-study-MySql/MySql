@@ -7,10 +7,10 @@
 <a href = "#">熟悉数据库的技术构成</a><br>
 <a href = "#">熟悉什么是MySQL </a><br>
 <a href = "#">掌握常见的MySQL工具</a><br>
-<a href = "#">了解如何学习MySQL </a>
+<a href = "#">了解如何学习MySQL </a><br>
 <img src="https://img.shields.io/badge/mysql-%E7%AC%AC%E4%BA%8C%E7%AB%A0%3AMySQL%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE-green">
-<a href = "#"> 掌握如何在Windows平台下安装和配置MySQL </a>
- <a href = "#">掌握启动服务并登录MySQL </a><br>
+<a href = "#"> 掌握如何在Windows平台下安装和配置MySQl</a>
+<a href = "#">掌握启动服务并登录MySQL </a>
  <a href = "#">掌握MySQL的两种配置方法</a><br>
 <a href = "#"> 熟悉MySQL常用图形管理工具</a><br>
 <a href = "#">掌握常见的MySQL工具</a><br>
